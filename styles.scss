@@ -1,0 +1,141 @@
+/*-- scss:rules --*/
+
+/* === Fonts === */
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600&display=swap");
+
+/* === Color system === */
+$title-bg: #444;
+$title-fg: #8fb3cc;
+$title-fg: #acc7db;
+$subtitle-fg: #fdfaf6;
+$heading-color: #4f7d9d;
+$heading-color: #4F7F6A;
+$inline-code-purple: #a277ff;
+
+$stp-green: #4F7F6A;
+$stp-green-light: #6FA08A;
+$stp-green-faint: #DCEAE3;
+
+a {
+  color: $stp-green-light;
+  text-decoration-color: $stp-green-light;
+}
+
+a:hover {
+  color: $stp-green;
+}
+
+h1, h2, h3 {
+  color: $stp-green;
+}
+
+// .quarto-title h1 {
+//   color: #2B2B2B;
+// }
+
+hr {
+  border-color: $stp-green-faint;
+}
+
+.sidebar-menu-container a.sidebar-link.active {
+  color: #2ea8e7;          
+  // font-weight: 600;
+}
+
+.sidebar-menu-container a.sidebar-link:hover .menu-text {
+  color: #2ea8e7;          
+}
+
+
+
+/* === Body content === */
+// section {
+main#quarto-document-content {
+  max-width: 64ch;
+  margin-left: auto;
+  margin-right: auto;
+
+  letter-spacing: 0.02em;
+
+  font-family: "Source Serif Pro", serif;
+  font-weight: 400;
+
+  font-size: 17px;
+  line-height: 1.5rem;
+
+  text-align: justify;
+}
+
+#quarto-sidebar > div.sidebar-menu-container {
+  // font-family: "Fira Sans", sans-serif;
+  li { 
+    font-size: 0.85rem; 
+    line-height: 1.3rem; 
+  }
+  
+}
+
+span.katex-html {
+  font-family: "Source Serif Pro", "KaTeX_Main", serif;
+  font-size: 1.05em;
+}
+
+.content :is(h1, h2, h3, h4, h5, h6) {
+  letter-spacing: 0.02em;
+  color: $heading-color;
+  // font-family: "Fira Sans", system-ui, sans-serif;
+  font-weight: 400;
+}
+
+
+.quarto-title-block {
+  // background-color: $navbar-bg;
+  padding: 0.8rem;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+  color: #777;
+  text-align: center;
+  background-color: transparent;
+  border-bottom: 1px solid #eee;
+  
+}
+
+// div.quarto-title-meta-author {
+//   line-height: 30px;
+// }
+
+// #title-block-header.quarto-title-block .quarto-title-meta-contents {
+//   padding-top: 20pt;
+// }
+
+#title-block-header > div.quarto-title > h1 {
+//   // color: $heading-color;
+  // color: #444 !important;
+//   font-family: "Source Serif Pro", serif;
+  font-weight: 400;
+}
+
+
+
+/* === Inline code === */
+:not(pre) > code {
+  color: $inline-code-purple;
+}
+
+.navbar {
+  min-height: 48px;
+  height: 48px;
+  line-height: 1;
+  // font-family: "Fira Sans", sans-serif;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  line-height: 1;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+

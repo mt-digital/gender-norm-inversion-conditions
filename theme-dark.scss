@@ -1,0 +1,63 @@
+/*-- scss:defaults --*/
+$link-color: #a3c6e7;
+$body-color: #d0d4d5;
+$code-bg: #222;
+$code-color: #89f692;
+
+$stp-green: #4F7F6A;
+$stp-green-light: #6FA08A;
+$stp-green-faint: #DCEAE3;
+
+#title-block-header > div.quarto-title > h1 { 
+  color: $stp-green-faint;
+}
+
+p { 
+  color: #bbb; 
+}
+
+main#quarto-document-content p {
+  color: #ddd !important; 
+  font-weight: 300;
+}
+
+.normal-form-table td:first-child,
+.normal-form-table th:first-child {
+  border-right-color: white;
+}
+
+.normal-form-table tr.top-border td {
+  border-top-color: white;
+}
+
+.normal-form-table tr.top-border td:first-child {
+  border-top: none;
+}
+
+/* Force line color in dark mode */
+.normal-form-table td:first-child,
+.normal-form-table th:first-child {
+  border-right: 1px solid white !important;
+}
+
+.normal-form-table tr.top-border td {
+  border-top: 1px solid white !important;
+}
+
+.normal-form-table tr.top-border td:first-child {
+  border-top: none !important;
+}
+
+.normal-form-table tr:nth-child(2) td:first-child {
+  border-right: none !important;
+}
+
+.normal-form-table tr:first-child th:first-child {
+  border-right: none !important;
+}
+
+
+.normal-form-table tr:nth-child(2) th:first-child {
+  border-right: none !important;
+}
+

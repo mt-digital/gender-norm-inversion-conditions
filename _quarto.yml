@@ -1,0 +1,29 @@
+title: SubtleTea Publishing Template
+format:
+  html:
+    html-math-method: katex
+    theme: 
+      light:
+        - styles.scss
+        - theme-light.scss
+        # - qss4s-styles.scss
+      dark:
+        - darkly 
+        - styles.scss
+        - theme-dark.scss
+        # - qss4s-styles.scss
+    fontsize: 1.0em
+    linestretch: 1.2
+    number-sections: true
+    number-depth: 3
+author:
+  - name: Matthew A. Turner
+    affiliations:
+      - name: SubtleTea; Stanford
+    orcid: 0000-0001-7421-4552
+    email: matt@subtle-tea.solutions
+    url: https://mat.phd
+abstract: |
+  This is an example abstract—add yours here!
+keywords: [template, demo]
+bibliography: "/Users/mt/workspace/Writing/library.bib"  
