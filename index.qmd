@@ -1,5 +1,93 @@
-# Introduction {#sec-intro}
-
-*TODO* Create a template that demonstrates the appearance, formatting, layout, and functionality of your format. Learn more about journal formats at <https://quarto.org/docs/journals/>.
+# Introduction
 
 
+
+# Model
+
+We model leadership as a pair of gendered behaviors evolving under a prevalence
+dynamic. Let $w \in [0,1]$ denote the prevalence of **women leaders**, and $m
+\in [0,1]$ the prevalence of **men leaders**. Time is continuous.
+
+Behavioral change follows the prevalence dynamic:
+
+$$
+\dot w = p_W - w
+$$ {#eq-w-dynamic}
+
+$$
+\dot m = p_M - m
+$$ {#eq-m-dynamic}
+
+Here, $p_W$ and $p_M$ denote the probabilities that an agent adopts the corresponding leadership behavior at the next instant.
+
+Women choose between leading and not leading by sampling social contexts. The probability that a woman adopts the behavior **Lead (woman)** is
+
+$$
+p_W
+= \frac{w^2(1-m)}{w^2(1-m) + (1-w)^2 m}
+$$ {#eq-pw}
+
+Men similarly choose between leading and not leading, but face a **deviance penalty** when deviating from the chauvinist norm that men should not follow women leaders. Let $d \in [0,1]$ denote the penalty imposed on male followers who support women leaders. The probability that a man adopts the behavior **Lead (man)** is
+
+$$
+p_M
+= \frac{m^2(1-w)}{m^2(1-w) + (1-m)^2 w (1-d)}
+$$ {#eq-pm}
+
+When $d = 0$, the system is symmetric under exchange of $w$ and $m$. When $d > 0$, male followers incur a norm-enforced penalty for recognizing women leaders, breaking the symmetry and biasing the system toward male leadership even when underlying coordination payoffs are otherwise identical.
+
+
+# Analysis
+
+Here's a script to plot the nullclines, i.e., a line passing through all pairs
+of $(w,m)$ where $\dot x = 0$, either read from a constant $m$ for analyzing
+$w$ or vice-versa.
+
+```{r}
+library(ggplot2)
+
+# parameters
+d <- 0.3   # male follower deviance penalty
+c <- 0.0   # women's leadership cost (set later if needed)
+
+# probability functions
+p_W <- function(w, m, c = 0) {
+  (w^2 * (1 - m) * (1 - c)) /
+    (w^2 * (1 - m) * (1 - c) + (1 - w)^2 * m)
+}
+
+p_M <- function(w, m, d = 0) {
+  (m^2 * (1 - w)) /
+    (m^2 * (1 - w) + (1 - m)^2 * w * (1 - d))
+}
+
+plot_nullclines <- function(c = 0.0, d = 0.5) {
+
+  # grid
+  grid <- expand.grid(
+    w = seq(0.001, 0.999, length.out = 400),
+    m = seq(0.001, 0.999, length.out = 400)
+  )
+
+  # nullcline values
+  grid$dw <- p_W(grid$w, grid$m, c) - grid$w
+  grid$dm <- p_M(grid$w, grid$m, d) - grid$m
+
+  # plot
+  cw = "red"
+  cm = "blue"
+  p <- ggplot(grid, aes(w, m)) +
+    geom_contour(aes(z=dw), breaks=0, color=cw, linewidth=1) +
+    geom_contour(aes(z=dm), breaks=0, color=cm, linewidth=1) +
+    coord_fixed() +
+    labs(
+      x = "w (women leaders)",
+      y = "m (men leaders)",
+      title = "Nullclines of the leadership dynamics",
+      subtitle = "Red: w-nullcline, Blue: m-nullcline"
+    ) +
+    theme_minimal()
+
+  return (p)
+}
+```
