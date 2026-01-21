@@ -1,8 +1,46 @@
 # Introduction
 
+Leadership is often treated as an individual attribute—an expression of competence, confidence, or preference. Yet in practice, leadership is a relational role: it exists only when others are willing to recognize, support, and follow. As a result, persistent leadership inequalities can arise even when underlying abilities, motivations, and payoffs are identical across groups.
+
+Empirically, such penalties are visible well beyond laboratory settings. Even when women occupy formal leadership roles in professional life—including cases in which they are the primary or sole household earner—they continue to perform a disproportionate share of domestic and emotional labor. This suggests that recognition of women’s authority is often partial or domain-specific rather than complete. 
+
+In more extreme cases, resistance to women’s leadership can escalate into hostility or violence, indicating that leadership by women is sometimes perceived not merely as unconventional, but as threatening. Our interest is not in these extreme outcomes themselves, but in the everyday norm-enforced costs that make recognition of women leaders locally risky and can stabilize inequality long before such outcomes are reached.
+
+In this paper, we study leadership as a pair of gendered behaviors evolving under social learning. Rather than modeling attitudes or beliefs, we focus on norm-enforced deviation penalties that shape which behaviors are locally safe to adopt. In particular, we examine a setting in which male followers incur a social penalty for recognizing women as leaders, reflecting the norm that “a real man does not need to listen to a woman.” Importantly, this penalty is imposed not by preferences or beliefs, but by the interaction structure itself.
+
+We formalize this setting using a coupled prevalence dynamic that tracks the frequencies of women leaders and men leaders over time. The model is symmetric in the absence of norm enforcement, but becomes asymmetric once deviation penalties are introduced. Under these conditions, the system exhibits multiple stable equilibria. Below a critical threshold of women leaders, chauvinism is stable even among well-intentioned agents. Above that threshold, the same agents converge on a norm of strong feminism. The transition between equilibria is driven not by persuasion or preference change, but by the collapse of socially enforced costs.
+
+This framework allows us to characterize leadership inequality as an equilibrium
+property of social learning dynamics, rather than as evidence of individual
+endorsement of dominance. It also enables systematic analysis of how different
+interventions shift tipping points by acting on distinct margins of the
+interaction structure. This is one of a growing consensus in social science that
+the structure of interactions—coordination payoff structure or group structure—can 
+affect behavioral choices independent of psychological effects [@Turner2023]. 
 
 
 # Model
+
+We model leadership as a pair of gendered behaviors evolving under social
+learning in a well-mixed population. At any time, individuals may exhibit one of
+two leadership behaviors: Lead (woman) or Lead (man). Leadership is not imposed;
+it is sustained only through recognition and support by others. Behavioral
+change follows a prevalence dynamic, in which the rate of change of each
+leadership behavior depends on the probability that agents adopt that behavior
+when sampling local social contexts. These adoption probabilities are derived
+from pairwise social comparison, capturing the idea that leadership legitimacy
+depends on observing consistent support rather than isolated acts.
+
+Crucially, the model allows for norm-enforced deviation penalties that apply
+asymmetrically across roles. In the baseline case, the system is symmetric:
+women and men face identical coordination incentives, and leadership prevalence
+depends only on existing frequencies. We then introduce a deviation penalty
+borne by male followers who recognize women as leaders, representing the social
+cost of violating a chauvinist norm. This penalty does not reflect preferences
+or beliefs, but is imposed endogenously by the interaction structure itself. As
+a result, the same underlying learning dynamics can generate either persistent
+inequality or rapid norm change, depending on whether deviation penalties
+dominate or collapse.
 
 We model leadership as a pair of gendered behaviors evolving under a prevalence
 dynamic. Let $w \in [0,1]$ denote the prevalence of **women leaders**, and $m
@@ -39,16 +77,46 @@ When $d = 0$, the system is symmetric under exchange of $w$ and $m$. When $d > 0
 
 # Analysis
 
+
+## Very high confidence (≈0.9–0.95)
+
+- **Symmetric baseline**  
+  When deviation penalties are absent (e.g., \( d = 0 \), and \( c = 0 \) if included), the system is symmetric and converges to a single interior equilibrium. This follows directly from model structure.
+
+- **Deviation penalties generate multiple equilibria**  
+  Introducing an asymmetric deviation penalty produces bistability. The combination of nonlinear conformity and norm-enforced costs is sufficient to generate multiple stable equilibria.
+
+- **Critical mass and tipping**  
+  An unstable interior equilibrium separates basins of attraction, defining a threshold in women’s leadership prevalence. Below this threshold, women’s leadership declines; above it, leadership expands.
+
+- **Mechanism of persistence**  
+  Persistent inequality arises without invoking preferences or beliefs. Stability is maintained through locally enforced costs that make deviation individually costly.
+
+## High confidence (≈0.75–0.85)
+
+- **Penalty collapse, not persuasion**  
+  Within this framework, transitions between equilibria occur through changes in effective penalties rather than through preference or belief change.
+
+- **Comparative statics (directional)**  
+  Increasing the deviation penalty raises the tipping threshold; reducing it lowers the threshold. The direction of these effects is robust, though their exact shape must be confirmed numerically.
+
+- **Asymmetric leverage**  
+  Reducing penalties on male followers is likely to provide greater leverage for shifting equilibria than directly increasing women’s leadership prevalence, though this claim is explicitly tested in the analysis.
+
+## Moderate confidence (≈0.6–0.7)
+
+- **Robustness across parameter ranges**  
+  The qualitative dynamics persist across a wide range of parameter values, though claims are restricted to tested regions and do not assume universality.
+
+
+## Scratchwork
+
 Here's a script to plot the nullclines, i.e., a line passing through all pairs
 of $(w,m)$ where $\dot x = 0$, either read from a constant $m$ for analyzing
 $w$ or vice-versa.
 
 ```{r}
 library(ggplot2)
-
-# parameters
-d <- 0.3   # male follower deviance penalty
-c <- 0.0   # women's leadership cost (set later if needed)
 
 # probability functions
 p_W <- function(w, m, c = 0) {

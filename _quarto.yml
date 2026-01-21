@@ -1,4 +1,5 @@
-title: SubtleTea Publishing Template
+title: "Victory is Inevitable: Calculating the Necessary Critical Mass Needed to
+Flip Gender Norms Against Women Leaders"
 format:
   html:
     html-math-method: katex
@@ -24,6 +25,19 @@ author:
     email: matt@subtle-tea.solutions
     url: https://mat.phd
 abstract: |
-  This is an example abstract—add yours here!
+  Leadership inequality is often attributed to differences in preferences,
+  beliefs, or competence. We instead model leadership as a relational role
+  sustained through social learning, and examine how norm-enforced deviation
+  penalties shape which leadership behaviors are locally safe to adopt. Using
+  a coupled prevalence dynamic for women’s and men’s leadership, we show that
+  penalties imposed on male followers who recognize women leaders are sufficient
+  to generate multiple stable equilibria. Below a critical threshold,
+  chauvinism is stable; above it, the system converges on a norm of strong
+  feminism. Transitions between equilibria occur through the collapse of
+  socially enforced costs rather than persuasion or preference change. The model
+  characterizes persistent leadership inequality as an equilibrium property of
+  interaction dynamics and identifies which margins provide the greatest
+  leverage for intervention.
+  
 keywords: [template, demo]
 bibliography: "/Users/mt/workspace/Writing/library.bib"  
